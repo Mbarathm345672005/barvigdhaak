@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>My Engineering Portfolio</h1>
+        <!-- Navigation links to backend API endpoints -->
+        <nav>
+            <ul>
+                <li><a href="https://your-heroku-app.herokuapp.com/">Home</a></li>
+                <li><a href="https://your-heroku-app.herokuapp.com/about">About</a></li>
+                <li><a href="https://your-heroku-app.herokuapp.com/projects">Projects</a></li>
+                <li><a href="https://your-heroku-app.herokuapp.com/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Final-year engineering student with experience in robotics, renewable energy systems, and software development.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <!-- Display projects fetched from backend API -->
+        <div id="projects-container">
+            <!-- Project cards will be dynamically added here -->
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <!-- Contact form will be handled by backend -->
+        <form id="contact-form" action="https://your-heroku-app.herokuapp.com/contact" method="POST">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+   
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            
+            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+      
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 My Portfolio</p>
+    </footer>
+
+    <script>
+        // Projects data
+        const projects = [
+            {
+                title: "Robotics Project",
+                description: "Built an autonomous robot using Arduino and various sensors.",
+                image: "images/robotics.png",
+                github: "https://github.com/yourusername/robotics-project",
+                liveDemo: "https://yourlivedemo.com/robotics",
+                width: 300,
+                height: 200
+            },
+            {
+                title: "Solar-Powered System",
+                description: "Designed an efficient solar-powered system for residential use.",
+                image: "images/solar.png",
+                github: "https://github.com/yourusername/solar-project",
+                liveDemo: "https://yourlivedemo.com/solar",
+                width: 300,
+                height: 200
+            },
+            {
+                title: "Software Development",
+                description: "Developed a full-stack web application using React and Node.js.",
+                image: "images/software.png",
+                github: "https://github.com/yourusername/software-project",
+                liveDemo: "https://yourlivedemo.com/software",
+                width: 300,
+                height: 200
+            }
+        ];
+
+        // Function to generate project cards
+        function generateProjectCards() {
+            const projectsContainer = document.getElementById('projects-container');
+            projects.forEach(project => {
+                const projectCard = document.createElement('div');
+                projectCard.classList.add('project');
+                projectCard.innerHTML = `
+                    <h3>${project.title}</h3>
+                    <p>${project.description}</p>
+                    <img src="${project.image}" alt="${project.title}" width="${project.width}" height="${project.height}">
+                    <a href="${project.github}" target="_blank">GitHub</a> |
+                    <a href="${project.liveDemo}" target="_blank">Live Demo</a>
+                `;
+                projectsContainer.appendChild(projectCard);
+            });
+        }
+
+        // Call the function to generate project cards
+        generateProjectCards();
+    </script>
+</body>
+</html>
